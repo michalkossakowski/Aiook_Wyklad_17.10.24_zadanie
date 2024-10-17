@@ -17,6 +17,7 @@ export class BusinessCardComponent {
   dateOfBirth: Date;
   interests: string[];
   selected:number=-1;
+  editedInterest:string = "";
 
   constructor() { 
     this.name = 'Joanna';
@@ -27,7 +28,16 @@ export class BusinessCardComponent {
 
   selectInterest(which:number):void{
       this.selected=which;
+      this.editedInterest = this.interests[which];
   }
 
+  Save():void{
+    this.interests[this.selected] = this.editedInterest;
+    this.selected = -1;
+  }
+
+  Cancel():void{
+    this.selected = -1;
+  }
   
 }
